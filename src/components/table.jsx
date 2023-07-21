@@ -35,6 +35,11 @@ const TableData = ({ data, country, status }) => {
       format: (value) => value.toLocaleString("en-US"),
     },
   ];
+  const [isLoading, setisLoading] = React.useState("false");
+  React.useEffect(() => {
+    setisLoading(true);
+    setTimeout(() => setisLoading(false), 1000);
+  }, [country]);
 
   const rows = data;
 
@@ -50,7 +55,7 @@ const TableData = ({ data, country, status }) => {
     setPage(0);
   };
 
-  return status ? (
+  return isLoading ? (
     <Loaders />
   ) : (
     <Paper sx={{ width: "100%", overflow: "hidden" }}>

@@ -5,8 +5,14 @@ import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import LineChart from "react-apexcharts";
+import Loaders from "./loaders";
 
 const LineChartCases = ({ data, country }) => {
+  const [isLoading, setisLoading] = React.useState("false");
+  React.useEffect(() => {
+    setisLoading(true);
+    setTimeout(() => setisLoading(false), 3000);
+  }, [country]);
   function CustomTabPanel(props) {
     const { children, value, index, ...other } = props;
 
@@ -126,7 +132,9 @@ const LineChartCases = ({ data, country }) => {
 
   const pieSeries = PieDataRecovered;
 
-  return (
+  return isLoading ? (
+    <Loaders />
+  ) : (
     <Box sx={{ width: "100%" }}>
       <h1>{country}</h1>
       <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
