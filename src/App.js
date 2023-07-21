@@ -4,10 +4,11 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import LineChartCases from "./components/lineChartCases";
 import Navbar from "./components/navbar";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import Maps from "./components/map";
 import Loaders from "./components/loaders";
 import SearchCountry from "./components/autoComplete";
+import NotFound from "./components/notFound";
 
 const App = () => {
   const [country, setcountry] = useState("Pakistan");
@@ -16,6 +17,8 @@ const App = () => {
   const [location, setlocation] = useState({});
   const [allCountries, setallCountires] = useState([]);
   const [countryData, setcountryData] = useState({});
+
+  const navigation = useNavigate();
 
   useEffect(() => {
     const fetchData = () => {
@@ -29,7 +32,7 @@ const App = () => {
           setMonthlyData(monthlyData);
         })
         .catch((error) => {
-          console.error("Error fetching data:", error);
+          navigation("/error");
         });
     };
 
@@ -50,7 +53,7 @@ const App = () => {
           setlocation({ lat, lng: long });
         })
         .catch((error) => {
-          console.error("Error fetching data:", error);
+          navigation("/error");
         });
     };
 
@@ -76,7 +79,7 @@ const App = () => {
           setallCountires(top10Countries);
         })
         .catch((error) => {
-          console.error("Error fetching data:", error);
+          navigation("/error");
         });
     };
 
@@ -150,6 +153,7 @@ const App = () => {
                 />
               }
             />
+            <Route path="/error" element={<NotFound />} />
           </Routes>
         </Box>
       )}
