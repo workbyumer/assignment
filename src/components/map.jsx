@@ -8,7 +8,7 @@ import {
   InfoWindow,
 } from "@react-google-maps/api";
 
-import Loaders from "../loaders";
+import Loaders from "./loaders";
 
 const Maps = ({ data, top10Countries, countryInfo }) => {
   const [infoWindowOpen, setInfoWindowOpen] = useState({});
@@ -31,7 +31,6 @@ const Maps = ({ data, top10Countries, countryInfo }) => {
   const onLoad = React.useCallback(function callback(map) {
     // This is just an example of getting and using the map instance!!! don't just blindly copy!
     const bounds = new window.google.maps.LatLngBounds();
-    map.fitBounds(bounds);
 
     setMap(map);
   }, []);
@@ -56,7 +55,7 @@ const Maps = ({ data, top10Countries, countryInfo }) => {
               lat: lat,
               lng: lng,
             }}
-            zoom={1}
+            zoom={5}
             onLoad={onLoad}
             onUnmount={onUnmount}
           >

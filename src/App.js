@@ -6,8 +6,8 @@ import LineChartCases from "./components/lineChartCases";
 import Navbar from "./components/navbar";
 import { Route, Routes } from "react-router-dom";
 import Maps from "./components/map";
-import Loaders from "./loaders";
-import SearchCountry from "./autoComplete";
+import Loaders from "./components/loaders";
+import SearchCountry from "./components/autoComplete";
 
 const App = () => {
   const [country, setcountry] = useState("Pakistan");
