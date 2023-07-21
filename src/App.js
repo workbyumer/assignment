@@ -68,10 +68,9 @@ const App = () => {
               recovered: m.recovered,
             };
           });
-          // Sort the countries based on cases in descending order
+
           data.sort((a, b) => b.cases - a.cases);
 
-          // Get the first 10 countries with the highest cases
           const top10Countries = data.slice(0, 10);
 
           setallCountires(top10Countries);
@@ -128,7 +127,13 @@ const App = () => {
           <Routes>
             <Route
               path="/table"
-              element={<TableData data={monthlyData} country={country} />}
+              element={
+                <TableData
+                  data={monthlyData}
+                  country={country}
+                  status={isLoading}
+                />
+              }
             />
             <Route
               path="/charts"

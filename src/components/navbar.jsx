@@ -28,11 +28,10 @@ const Navbar = ({ appData, window }) => {
 
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
-      <Link to={"/"}>
-        <Typography variant="h6" sx={{ my: 2 }}>
-          Covid-19 Dashboard
-        </Typography>
-      </Link>
+      <Typography variant="h6" sx={{ my: 2 }}>
+        Covid-19 Dashboard
+      </Typography>
+
       <Divider />
       <List>
         {navItems.map((item, index) => (
@@ -63,15 +62,15 @@ const Navbar = ({ appData, window }) => {
           >
             <MenuIcon />
           </IconButton>
-          <Link to="/">
-            <Typography
-              variant="h6"
-              component="div"
-              sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
-            >
-              Covid-19 Dashboard
-            </Typography>
-          </Link>
+
+          <Typography
+            variant="h6"
+            component="div"
+            sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
+          >
+            Covid-19 Dashboard
+          </Typography>
+
           <Box sx={{ display: { xs: "none", sm: "block" } }}>
             {navItems.map((item, index) => (
               <Link to={`/${item.toLowerCase()}`}>
@@ -90,7 +89,7 @@ const Navbar = ({ appData, window }) => {
           open={mobileOpen}
           onClose={handleDrawerToggle}
           ModalProps={{
-            keepMounted: true, // Better open performance on mobile.
+            keepMounted: true,
           }}
           sx={{
             display: { xs: "block", sm: "none" },

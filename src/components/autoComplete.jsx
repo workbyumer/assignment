@@ -44,10 +44,7 @@ export default function SearchCountry({ getCountry }) {
 // From https://bitbucket.org/atlassian/atlaskit-mk-2/raw/4ad0e56649c3e6c973e226b7efaeb28cb240ccb0/packages/core/select/src/data/countries.js
 const countries = [
   { label: "Andorra", phone: "376" },
-  {
-    label: "UAE",
-    phone: "971",
-  },
+
   { label: "Afghanistan", phone: "93" },
   {
     label: "Antigua and Barbuda",
@@ -408,6 +405,10 @@ const countries = [
   {
     label: "British Virgin Islands",
     phone: "1-284",
+  },
+  {
+    label: "UAE",
+    phone: "971",
   },
   {
     label: "US Virgin Islands",

@@ -59,6 +59,9 @@ const LineChartCases = ({ data, country }) => {
         options: {
           chart: {
             width: "90%",
+            animations: {
+              enabled: false,
+            },
           },
         },
       },
@@ -112,6 +115,9 @@ const LineChartCases = ({ data, country }) => {
         options: {
           chart: {
             width: "90%",
+            animations: {
+              enabled: false,
+            },
           },
         },
       },

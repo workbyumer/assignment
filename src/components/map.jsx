@@ -55,7 +55,7 @@ const Maps = ({ data, top10Countries, countryInfo }) => {
               lat: lat,
               lng: lng,
             }}
-            zoom={5}
+            zoom={3}
             onLoad={onLoad}
             onUnmount={onUnmount}
           >
