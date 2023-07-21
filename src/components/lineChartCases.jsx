@@ -44,7 +44,6 @@ const LineChartCases = ({ data, country }) => {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-
   const LineDataCases = data?.map((m) => m.cases);
   const BarDataDeaths = data?.map((m) => m.deaths);
   const PieDataRecovered = data?.map((m) => m.recovered);
@@ -131,43 +130,52 @@ const LineChartCases = ({ data, country }) => {
           aria-label="basic tabs example"
           centered
         >
-          <Tab label="Cases" {...a11yProps(0)} />
-          <Tab label="Deaths" {...a11yProps(1)} />
-          <Tab label="Recovered" {...a11yProps(2)} />
+          <Tab label="Cases" />
+          <Tab label="Deaths" />
+          <Tab label="Recovered" />
         </Tabs>
       </Box>
-      <CustomTabPanel value={value} index={0}>
-        <LineChart
-          options={lineOptions}
-          series={lineSeries}
-          type="line"
-          width="1000"
-          height="300"
-          data-datalazyloaded="false"
-        />
-      </CustomTabPanel>
-      <CustomTabPanel value={value} index={1}>
-        <LineChart
-          options={barOptions}
-          series={barSeries}
-          type="bar"
-          width="1000"
-          height="300"
-          data-datalazyloaded="false"
-        />
-      </CustomTabPanel>
-      <CustomTabPanel value={value} index={2}>
-        <LineChart
-          options={pieOptions}
-          series={pieSeries}
-          type="pie"
-          width="1000"
-          height="300"
-          data-datalazyloaded="false"
-        />
-      </CustomTabPanel>
+      {value === 0 && (
+        <CustomTabPanel>
+          <LineChart
+            options={lineOptions}
+            series={lineSeries}
+            type="line"
+            width="1000"
+            height="300"
+            data-datalazyloaded="false"
+          />
+        </CustomTabPanel>
+      )}
+      {value === 1 && (
+        <CustomTabPanel>
+          <LineChart
+            options={barOptions}
+            series={barSeries}
+            type="bar"
+            width="1000"
+            height="300"
+            data-datalazyloaded="false"
+          />
+        </CustomTabPanel>
+      )}
+      {value === 2 && (
+        <CustomTabPanel>
+          <LineChart
+            options={pieOptions}
+            series={pieSeries}
+            type="pie"
+            width="1000"
+            height="300"
+            data-datalazyloaded="false"
+          />
+        </CustomTabPanel>
+      )}
     </Box>
   );
 };
-
+LineChartCases.propTypes = {
+  data: PropTypes.arrayOf(PropTypes.object).isRequired,
+  country: PropTypes.string.isRequired,
+};
 export default LineChartCases;

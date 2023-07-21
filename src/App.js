@@ -122,7 +122,9 @@ const App = () => {
         <Loaders check={isLoading} />
       ) : (
         <Box marginTop={8} display={isLoading === true ? "none" : "block"}>
-          <SearchCountry getCountry={setcountry} />
+          <Box display="flex" justifyContent="center" alignItems="center">
+            <SearchCountry getCountry={setcountry} />
+          </Box>
           <Routes>
             <Route
               path="/table"
@@ -146,8 +148,9 @@ const App = () => {
           </Routes>
         </Box>
       )}
-
-      <Navbar />
+      <Box marginTop={1}>
+        <Navbar countrySetting={setcountry} />
+      </Box>
     </Box>
   );
 };
