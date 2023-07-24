@@ -41,11 +41,18 @@ const Maps = ({
   const onUnmount = React.useCallback(function callback(map) {
     setMap(null);
   }, []);
+  const handleClickScroll = () => {
+    const element = document.getElementById("table");
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   const handleMarker = (country) => {
     setcountrySelected(country);
+    handleClickScroll();
   };
-  const tableRef = useRef(null);
+
   const { lat, lng } = data;
   return (
     <Box>
@@ -86,11 +93,9 @@ const Maps = ({
         ) : (
           <Loaders />
         )}
-        <TableData
-          data={dataTable}
-          country={countrySelected}
-          tableRef={tableRef}
-        />
+        <Box id="table">
+          <TableData data={dataTable} country={countrySelected} />
+        </Box>
       </Box>
     </Box>
   );

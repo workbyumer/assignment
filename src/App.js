@@ -4,7 +4,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import LineChartCases from "./components/lineChartCases";
 import Navbar from "./components/navbar";
-import { Route, Routes, useNavigate } from "react-router-dom";
+import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import Maps from "./components/map";
 import Loaders from "./components/loaders";
 import SearchCountry from "./components/autoComplete";
@@ -30,6 +30,7 @@ const App = () => {
           const data = response.data.timeline;
           const monthlyData = groupDataByMonth(data);
           setMonthlyData(monthlyData);
+          navigation("/map");
         })
         .catch((error) => {
           navigation("/error");
@@ -124,7 +125,12 @@ const App = () => {
         <Loaders check={isLoading} />
       ) : (
         <Box marginTop={8} display={isLoading === true ? "none" : "block"}>
-          <Box display="flex" justifyContent="center" alignItems="center">
+          <Box
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+            marginTop={9}
+          >
             <SearchCountry getCountry={setcountry} />
           </Box>
           <Routes>
@@ -160,7 +166,7 @@ const App = () => {
         </Box>
       )}
       <Box marginTop={1}>
-        <Navbar countrySetting={setcountry} />
+        <Navbar />
       </Box>
     </Box>
   );
