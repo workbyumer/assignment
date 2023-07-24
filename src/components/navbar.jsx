@@ -62,15 +62,15 @@ const Navbar = ({ appData, window }) => {
           >
             <MenuIcon />
           </IconButton>
-
-          <Typography
-            variant="h6"
-            component="div"
-            sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
-          >
-            Covid-19 Dashboard
-          </Typography>
-
+          <Link to="/map" style={{ textDecoration: "none", color: "black" }}>
+            <Typography
+              variant="h6"
+              component="div"
+              sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
+            >
+              Covid-19 Dashboard
+            </Typography>
+          </Link>
           <Box sx={{ display: { xs: "none", sm: "block" } }}>
             {navItems.map((item, index) => (
               <Link to={`/${item.toLowerCase()}`}>

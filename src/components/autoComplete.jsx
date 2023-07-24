@@ -3,7 +3,7 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 
-export default function SearchCountry({ getCountry }) {
+export default function SearchCountry({ getCountry, country }) {
   const handleSelected = (event, value) => {
     if (value) {
       getCountry(value.label);
@@ -11,33 +11,36 @@ export default function SearchCountry({ getCountry }) {
   };
 
   return (
-    <Autocomplete
-      onChange={handleSelected}
-      id="country-select-demo"
-      sx={{ width: 300 }}
-      options={countries}
-      autoHighlight
-      getOptionLabel={(option) => option.label}
-      renderOption={(props, option) => (
-        <Box
-          component="li"
-          sx={{ "& > img": { mr: 2, flexShrink: 0 } }}
-          {...props}
-        >
-          {option.label}
-        </Box>
-      )}
-      renderInput={(params) => (
-        <TextField
-          {...params}
-          label="Choose a country"
-          inputProps={{
-            ...params.inputProps,
-            autoComplete: "new-password", // disable autocomplete and autofill
-          }}
-        />
-      )}
-    />
+    <Box>
+      <Autocomplete
+        onChange={handleSelected}
+        id="country-select-demo"
+        sx={{ width: 300 }}
+        defaultValue={countries[175]}
+        options={countries}
+        autoHighlight
+        getOptionLabel={(option) => option.label}
+        renderOption={(props, option) => (
+          <Box
+            component="li"
+            sx={{ "& > img": { mr: 2, flexShrink: 0 } }}
+            {...props}
+          >
+            {option.label}
+          </Box>
+        )}
+        renderInput={(params) => (
+          <TextField
+            {...params}
+            label="Choose a country"
+            inputProps={{
+              ...params.inputProps,
+              autoComplete: "new-password", // disable autocomplete and autofill
+            }}
+          />
+        )}
+      />
+    </Box>
   );
 }
 

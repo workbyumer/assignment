@@ -8,6 +8,7 @@ import TableHead from "@mui/material/TableHead";
 import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
 import Loaders from "./loaders";
+import { Box } from "@mui/material";
 
 const TableData = ({ data, country }) => {
   const columns = [
@@ -59,7 +60,9 @@ const TableData = ({ data, country }) => {
     <Loaders />
   ) : (
     <Paper sx={{ width: "100%", overflow: "hidden" }}>
-      <h1>{country}</h1>
+      <Box display="flex" justifyContent="center">
+        <h1>{country ? country : "Pakistan"}</h1>
+      </Box>
       <TableContainer sx={{ maxHeight: 440 }}>
         <Table stickyHeader aria-label="sticky table">
           <TableHead>

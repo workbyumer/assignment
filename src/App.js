@@ -1,10 +1,10 @@
+import { useEffect, useState } from "react";
+import { Route, Routes, useNavigate } from "react-router-dom";
+import axios from "axios";
 import { Box } from "@mui/material";
 import TableData from "./components/table";
-import axios from "axios";
-import { useEffect, useState } from "react";
 import LineChartCases from "./components/lineChartCases";
 import Navbar from "./components/navbar";
-import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import Maps from "./components/map";
 import Loaders from "./components/loaders";
 import SearchCountry from "./components/autoComplete";
@@ -129,9 +129,9 @@ const App = () => {
             display="flex"
             justifyContent="center"
             alignItems="center"
-            marginTop={9}
+            marginTop={10}
           >
-            <SearchCountry getCountry={setcountry} />
+            <SearchCountry getCountry={setcountry} country={country} />
           </Box>
           <Routes>
             <Route

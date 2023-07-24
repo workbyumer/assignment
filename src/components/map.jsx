@@ -25,16 +25,13 @@ const Maps = ({
     googleMapsApiKey: "AIzaSyDiEmXC03SOnnqDfcfAZCrRpAut6YxWN2E",
   });
   const containerStyle = {
-    width: "99vw",
+    width: "98.75vw",
     height: "100vh",
   };
 
   const [map, setMap] = React.useState(null);
 
   const onLoad = React.useCallback(function callback(map) {
-    // This is just an example of getting and using the map instance!!! don't just blindly copy!
-    const bounds = new window.google.maps.LatLngBounds();
-
     setMap(map);
   }, []);
 

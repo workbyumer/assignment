@@ -136,7 +136,9 @@ const LineChartCases = ({ data, country }) => {
     <Loaders />
   ) : (
     <Box sx={{ width: "100%" }}>
-      <h1>{country}</h1>
+      <Box display="flex" justifyContent="center">
+        <h1>{country ? country : "Pakistan"}</h1>
+      </Box>
       <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
         <Tabs
           value={value}
