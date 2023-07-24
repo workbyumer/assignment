@@ -147,6 +147,8 @@ const App = () => {
               element={
                 <Maps
                   data={location}
+                  dataTable={monthlyData}
+                  countryTable={country}
                   countryInfo={countryData}
                   top10Countries={allCountries}
                   apiKey="AIzaSyB3I-b43fURLg1l-XX4XtQVvqAdAmCMcMM"

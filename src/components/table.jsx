@@ -9,7 +9,7 @@ import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
 import Loaders from "./loaders";
 
-const TableData = ({ data, country, status }) => {
+const TableData = ({ data, country }) => {
   const columns = [
     { id: "month", label: "Timeline", minWidth: 170 },
 

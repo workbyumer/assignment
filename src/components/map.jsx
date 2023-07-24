@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { Box } from "@mui/material";
 import MarkerIcon from "./map-marker.svg";
 import {
@@ -9,14 +9,17 @@ import {
 } from "@react-google-maps/api";
 
 import Loaders from "./loaders";
+import TableData from "./table";
 
-const Maps = ({ data, top10Countries, countryInfo }) => {
-  const [infoWindowOpen, setInfoWindowOpen] = useState({});
+const Maps = ({
+  data,
+  top10Countries,
+  countryInfo,
+  dataTable,
+  countryTable,
+}) => {
   const [countrySelected, setcountrySelected] = useState("");
 
-  const showInfoWindow = () => {
-    setInfoWindowOpen(true);
-  };
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
     googleMapsApiKey: "AIzaSyDiEmXC03SOnnqDfcfAZCrRpAut6YxWN2E",
@@ -41,9 +44,8 @@ const Maps = ({ data, top10Countries, countryInfo }) => {
 
   const handleMarker = (country) => {
     setcountrySelected(country);
-    console.log(country);
-    setInfoWindowOpen({ [countrySelected]: !infoWindowOpen });
   };
+  const tableRef = useRef(null);
   const { lat, lng } = data;
   return (
     <Box>
@@ -65,18 +67,7 @@ const Maps = ({ data, top10Countries, countryInfo }) => {
                 lat: data.lat,
                 lng: data.lng,
               }}
-            >
-              {countrySelected === countryInfo.country && (
-                <InfoWindow>
-                  <Box>
-                    <p>Country: {countryInfo.country}</p>
-                    <p>Cases: {countryInfo.cases}</p>
-                    <p>Deaths: {countryInfo.deaths}</p>
-                    <p>Recovered: {countryInfo.recovered}</p>
-                  </Box>
-                </InfoWindow>
-              )}
-            </MarkerF>
+            ></MarkerF>
             {top10Countries?.map((m, index) => {
               return (
                 <MarkerF
@@ -88,24 +79,18 @@ const Maps = ({ data, top10Countries, countryInfo }) => {
                     lat: m.lat,
                     lng: m.lng,
                   }}
-                >
-                  {countrySelected === m.country && (
-                    <InfoWindow>
-                      <Box>
-                        <p>Country: {m.country}</p>
-                        <p>Cases: {m.cases}</p>
-                        <p>Deaths: {m.deaths}</p>
-                        <p>Recovered: {m.recovered}</p>
-                      </Box>
-                    </InfoWindow>
-                  )}
-                </MarkerF>
+                ></MarkerF>
               );
             })}
           </GoogleMap>
         ) : (
           <Loaders />
         )}
+        <TableData
+          data={dataTable}
+          country={countrySelected}
+          tableRef={tableRef}
+        />
       </Box>
     </Box>
   );
