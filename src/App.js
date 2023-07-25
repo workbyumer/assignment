@@ -28,6 +28,13 @@ const App = () => {
         )
         .then((response) => {
           const data = response.data.timeline;
+          const cases = orignalData(data.cases);
+          const deaths = orignalData(data.deaths);
+          const recovered = orignalData(data.recovered);
+          data.cases = cases;
+          data.deaths = deaths;
+          data.recovered = recovered;
+
           const monthlyData = groupDataByMonth(data);
           setMonthlyData(monthlyData);
           navigation("/map");
@@ -118,7 +125,15 @@ const App = () => {
 
     return monthlyDataArray;
   };
-
+  const orignalData = (accumalated) => {
+    let k = Object.keys(accumalated);
+    let n = k.length;
+    let realData = { [k[0]]: accumalated[k[0]] };
+    for (let i = 0; i < n - 1; i++) {
+      realData[k[i + 1]] = Math.abs(accumalated[k[i + 1]] - accumalated[k[i]]);
+    }
+    return realData;
+  };
   return (
     <Box>
       {isLoading === true ? (
