@@ -66,7 +66,7 @@ const Maps = ({
             onUnmount={onUnmount}
           >
             <MarkerF
-              onClick={() => handleMarker(countryInfo.country)}
+              onClick={() => handleMarker(countryTable)}
               position={{
                 lat: data.lat,
                 lng: data.lng,
